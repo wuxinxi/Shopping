@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorPrimary">#eb4f38</color>
+    <color name="colorPrimaryDark">#ED3E24</color>
+
+    <color name="bg_color">#f1f1f1</color>
+    <color name="black">#000</color>
+
+    <color name="detail_bgColor">#f5f5f5</color>
+    <color name="defaultTextColor">#666</color>
+    <color name="white">#FFFFFF</color>
+    <color name="bottom_nav_normal">#C7CCD3</color>
+    <color name="gray">#C0C0C0</color>
+    <color name="red">#D82917</color>
+
+    <color name="cart_bottom">#90A0A0</color>
+    <color name="cart_sum">#DEE2E2</color>
+
+    <!--波纹-->
+    <color name="transparent">#00000000</color>
+    <color name="transparent_half_1">#10000000</color>
+
+    <color name="tab_unselect">#c9c9c9</color>
+</resources>
