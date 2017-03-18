@@ -39,13 +39,11 @@ public class ListRequest extends RestRequest {
         String response = StringRequest.parseResponseString(headers(), responseBody);
         Logger.d("res:" + response);
         if (TYPE == API.HOME_TYPE) {
-            Logger.d("HomeBean开始");
             return new Gson().fromJson(response, new TypeToken<List<HomeBean>>() {
             }.getType());
         } else if (TYPE == API.HOT_TYPE) {
             return new Gson().fromJson(response, HotBean.class);
         } else if (TYPE == API.BANNER_TYPE) {
-            Logger.d("Banner开始");
             return new Gson().fromJson(response, new TypeToken<List<BannerBean>>() {
             }.getType());
         }

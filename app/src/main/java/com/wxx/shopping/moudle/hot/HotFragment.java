@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -51,9 +50,6 @@ public class HotFragment extends BaseFragment<OnResultView<HotBean.ListBean>, Ho
 
     private static int currPage = 1;
 
-    private Snackbar loadFail;
-    private Snackbar loadAll;
-
     public static HotFragment newInstance() {
         Bundle args = new Bundle();
         HotFragment fragment = new HotFragment();
@@ -74,7 +70,7 @@ public class HotFragment extends BaseFragment<OnResultView<HotBean.ListBean>, Ho
         recyclerView.setLayoutManager(manager);
         freshLayout.setColorSchemeResources(android.R.color.holo_green_light, android.R.color.holo_blue_light);
         freshLayout.setOnRefreshListener(this);
-
+        mAdapter = new HotAdapter();
     }
 
     @Override
@@ -109,7 +105,7 @@ public class HotFragment extends BaseFragment<OnResultView<HotBean.ListBean>, Ho
         Logger.d("value:" + value);
         //value=1时表示是第一页
         if (value == 1) {
-            mAdapter = new HotAdapter(TList);
+            mAdapter.change(TList);
             recyclerView.setAdapter(mAdapter);
             mAdapter.setClick(this);
         } else mAdapter.loadMore(TList);

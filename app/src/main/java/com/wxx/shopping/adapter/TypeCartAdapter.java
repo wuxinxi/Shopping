@@ -10,45 +10,39 @@ import com.wxx.shopping.R;
 import com.wxx.shopping.bean.HotBean;
 import com.wxx.shopping.utils.OnItemClickListener;
 import com.wxx.shopping.viewholder.FootViewHolder;
-import com.wxx.shopping.viewholder.HotViewHolder;
-import com.yanzhenjie.nohttp.Logger;
+import com.wxx.shopping.viewholder.TypeCartViewHolder;
 
 import java.util.List;
 
 /**
- * 作者：Tangren_ on 2017/3/15 15:40.
+ * 作者：Tangren_ on 2017/3/18 14:39.
  * 邮箱：wu_tangren@163.com
  * TODO:一句话描述
  */
 
-public class HotAdapter extends RecyclerView.Adapter {
+public class TypeCartAdapter extends RecyclerView.Adapter {
 
     private static final int ITEM_NORMAL = 0;
 
-    private static final int ITEM_FOOT = 1;
-
-    private static final int ITEM_NONE = 2;
-
-    private OnItemClickListener listener;
+    public static final int ITEM_FOOT = 1;
 
     private List<HotBean.ListBean> listBeen;
 
-    private LayoutInflater inflater;
+    private LayoutInflater mInflater;
 
-    public HotAdapter() {
-    }
+    private OnItemClickListener listener;
 
-    public HotAdapter(List<HotBean.ListBean> listBeen) {
-        this.listBeen = listBeen;
+    public TypeCartAdapter() {
+
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        inflater = LayoutInflater.from(parent.getContext());
+        mInflater = LayoutInflater.from(parent.getContext());
         if (viewType == ITEM_NORMAL) {
-            return new HotViewHolder(inflater.inflate(R.layout.item_hot, parent, false), listener, listBeen);
+            return new TypeCartViewHolder(mInflater.inflate(R.layout.item_type_cart, parent, false), listener, listBeen);
         } else if (viewType == ITEM_FOOT)
-            return new FootViewHolder(inflater.inflate(R.layout.item_foot, parent, false));
+            return new FootViewHolder(mInflater.inflate(R.layout.item_foot, parent, false));
         return null;
     }
 
@@ -57,30 +51,23 @@ public class HotAdapter extends RecyclerView.Adapter {
         if (position == getItemCount() - 1)
             return;
         HotBean.ListBean bean = listBeen.get(position);
-        if (bean == null) {
-            Logger.d("为空了");
+        if (bean == null)
             return;
-        }
-        if (holder instanceof HotViewHolder) {
+        if (holder instanceof TypeCartViewHolder) {
             Picasso.with(MyApplication.getInstance()).load(bean.getImgUrl())
                     .placeholder(R.mipmap.ic_only)
                     .error(R.mipmap.ic_error)
-                    .into(((HotViewHolder) holder).imageView);
-            ((HotViewHolder) holder).title.setText(bean.getName());
-            ((HotViewHolder) holder).prices.setText("￥：" + bean.getPrice());
+                    .into(((TypeCartViewHolder) holder).imageView);
+            ((TypeCartViewHolder) holder).title.setText(bean.getName());
+            ((TypeCartViewHolder) holder).prices.setText("￥" + bean.getPrice());
         }
+
     }
 
 
     @Override
     public int getItemCount() {
         return listBeen == null ? 0 : listBeen.size() + 1;
-    }
-
-
-    @Override
-    public long getItemId(int position) {
-        return position;
     }
 
     @Override
@@ -108,6 +95,4 @@ public class HotAdapter extends RecyclerView.Adapter {
     public void setClick(OnItemClickListener<HotBean.ListBean> listener) {
         this.listener = listener;
     }
-
-
 }

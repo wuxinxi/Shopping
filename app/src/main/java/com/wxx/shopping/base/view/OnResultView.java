@@ -11,6 +11,7 @@ import java.util.List;
  */
 
 public interface OnResultView<T> extends BaseView {
+
     void showList(List<T> TList, int value);
 
     void onFail(String msg);

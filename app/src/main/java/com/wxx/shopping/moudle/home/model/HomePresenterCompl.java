@@ -28,7 +28,7 @@ public class HomePresenterCompl implements HomeModel {
     public void loadHomeList(LoadListener listener) {
 
         Request<String> request = NoHttp.createStringRequest(API.CAMPAIGN_HOME, RequestMethod.GET);
-        request.setCacheMode(CacheMode.REQUEST_NETWORK_FAILED_READ_CACHE);
+        request.setCacheMode(CacheMode.NONE_CACHE_REQUEST_NETWORK);
         CallServer.getHttpclient().add(0, request, new Load(listener));
     }
 
@@ -36,7 +36,7 @@ public class HomePresenterCompl implements HomeModel {
     public void loadBanner(LoadBannerListener listener) {
 
         Request<String> request = NoHttp.createStringRequest(API.BANNER, RequestMethod.GET);
-        request.setCacheMode(CacheMode.REQUEST_NETWORK_FAILED_READ_CACHE);
+        request.setCacheMode(CacheMode.NONE_CACHE_REQUEST_NETWORK);
         CallServer.getHttpclient().add(1, request, new Load(listener));
     }
 

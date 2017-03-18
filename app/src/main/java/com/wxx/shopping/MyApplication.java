@@ -6,6 +6,8 @@ import com.yanzhenjie.nohttp.Logger;
 import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.OkHttpNetworkExecutor;
 
+import me.yokeyword.fragmentation.Fragmentation;
+
 /**
  * 作者：Tangren_ on 2017/3/14 15:21.
  * 邮箱：wu_tangren@163.com
@@ -24,6 +26,9 @@ public class MyApplication extends Application {
                 .setNetworkExecutor(new OkHttpNetworkExecutor()));
         Logger.setDebug(true);
         Logger.setTag("----Debug日志：----");
+        Fragmentation.builder()
+                .stackViewMode(Fragmentation.BUBBLE)
+                .install();
     }
 
     public static MyApplication getInstance() {

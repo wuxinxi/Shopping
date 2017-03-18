@@ -3,13 +3,25 @@ package com.wxx.shopping.moudle.type;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import com.wxx.shopping.R;
+import com.wxx.shopping.adapter.TypeCartAdapter;
 import com.wxx.shopping.base.BaseFragment;
-import com.wxx.shopping.base.BasePresenter;
+import com.wxx.shopping.base.view.OnResultView;
+import com.wxx.shopping.bean.HotBean;
+import com.wxx.shopping.moudle.type.presenter.TypePresenter;
+import com.wxx.shopping.utils.TToast;
+import com.wxx.shopping.widget.AutoLoadOnScrollListener;
+import com.yanzhenjie.nohttp.Logger;
+
+import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 作者：Tangren_ on 2017/3/15 20:50.
@@ -17,16 +29,25 @@ import butterknife.BindView;
  * TODO:一句话描述
  */
 
-public class ContentFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class ContentFragment extends BaseFragment<OnResultView<HotBean.ListBean>, TypePresenter> implements OnResultView<HotBean.ListBean>, SwipeRefreshLayout.OnRefreshListener {
 
     private static final String ARG_TYPE = "arg_type";
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.refresh)
     SwipeRefreshLayout refresh;
+    @BindView(R.id.refreshBtn)
+    Button refreshBtn;
 
     private int type;
 
+    private TypeCartAdapter mAdapter;
+
+    private GridLayoutManager manager;
+
+    private AutoLoadOnScrollListener listener;
+
+    private static int currPage = 1;
 
     public static ContentFragment newInstance(int type) {
 
@@ -42,18 +63,23 @@ public class ContentFragment extends BaseFragment implements SwipeRefreshLayout.
         super.onCreate(savedInstanceState);
         Bundle args = getArguments();
         if (args != null) {
-            type = args.getInt(ARG_TYPE, 0);
+            type = args.getInt(ARG_TYPE, 0) + 1;
         }
     }
 
     @Override
-    protected BasePresenter createPresenter() {
-        return null;
+    protected TypePresenter createPresenter() {
+        return new TypePresenter(this);
     }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        refresh.setColorSchemeResources(android.R.color.holo_green_light, android.R.color.holo_blue_light);
+        refresh.setOnRefreshListener(this);
+        mAdapter = new TypeCartAdapter();
+        manager = new GridLayoutManager(getActivity(), 2);
 
+        recyclerView.setLayoutManager(manager);
     }
 
     @Override
@@ -64,10 +90,58 @@ public class ContentFragment extends BaseFragment implements SwipeRefreshLayout.
     @Override
     protected void initData() {
 
+        refresh.post(new Runnable() {
+            @Override
+            public void run() {
+                refresh.setRefreshing(true);
+                mPresetner.fetchType(type, 1);
+            }
+        });
+
+        listener = new AutoLoadOnScrollListener(manager) {
+            @Override
+            public void onLoadMore(int currentPage) {
+
+                mPresetner.fetchType(type, currPage);
+            }
+        };
+        recyclerView.addOnScrollListener(listener);
     }
 
     @Override
     public void onRefresh() {
-
+        mPresetner.fetchType(type, 1);
     }
+
+    @Override
+    public void showList(List<HotBean.ListBean> TList, int value) {
+        Logger.d("ContentFragment:" + TList.toString());
+        currPage = value + 1;
+        if (value == 1) {
+            mAdapter.change(TList);
+            recyclerView.setAdapter(mAdapter);
+        } else mAdapter.loadMore(TList);
+
+        mAdapter.notifyItemRemoved(mAdapter.getItemCount());
+        refresh.setRefreshing(false);
+        listener.setLoading(false);
+    }
+
+    @Override
+    public void onFail(String msg) {
+        refresh.setRefreshing(false);
+        TToast.showToast(msg);
+        if (mAdapter.getItemCount() <= 0) {
+            refreshBtn.setVisibility(View.VISIBLE);
+        } else {
+            refreshBtn.setVisibility(View.GONE);
+        }
+        mAdapter.notifyItemRemoved(mAdapter.getItemCount());
+    }
+
+    @OnClick(R.id.refreshBtn)
+    public void onClick() {
+        mPresetner.fetchType(type, 1);
+    }
+
 }
