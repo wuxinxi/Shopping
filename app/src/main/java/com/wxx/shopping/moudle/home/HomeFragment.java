@@ -116,11 +116,13 @@ public class HomeFragment extends BaseFragment<OnResultView, HomePresenter> impl
     @Override
     public void onFail(String msg) {
         freshLayout.setRefreshing(false);
+        TToast.showToast(msg);
     }
 
     @Override
     public void showBanner(List<BannerBean> TList) {
-
+        if (TList == null)
+            return;
         String imageUrl[] = new String[TList.size()];
         String title[] = new String[TList.size()];
         for (int i = 0; i < TList.size(); i++) {

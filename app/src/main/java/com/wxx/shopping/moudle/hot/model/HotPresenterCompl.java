@@ -23,7 +23,7 @@ public class HotPresenterCompl implements HotModel<HotBean.ListBean> {
         request.add("curPage", value[0]);
         request.add("pageSize", API.PAGESIZE);
         request.setCacheMode(CacheMode.NONE_CACHE_REQUEST_NETWORK);
-        CallServer.getHttpclient().add(1, request, new LoadHot(listener));
+        CallServer.getHttpclient().add(2, request, new LoadHot(listener));
     }
 
     private class LoadHot implements HttpListener<HotBean> {

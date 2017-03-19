@@ -29,7 +29,7 @@ public class TypePresenterCompl implements HotModel<HotBean.ListBean> {
         request.add("curPage", value[1]);
         request.add("pageSize", API.PAGESIZE);
         request.setCacheMode(CacheMode.NONE_CACHE_REQUEST_NETWORK);
-        CallServer.getHttpclient().add(1, request, new HttpListener<String>() {
+        CallServer.getHttpclient().add(3, request, new HttpListener<String>() {
             @Override
             public void success(int what, Response<String> response) {
                 Logger.d("contentFragment 发起请求，得到数据：" + response.get().toString());

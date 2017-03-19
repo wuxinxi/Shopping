@@ -71,6 +71,7 @@ public class HotFragment extends BaseFragment<OnResultView<HotBean.ListBean>, Ho
         freshLayout.setColorSchemeResources(android.R.color.holo_green_light, android.R.color.holo_blue_light);
         freshLayout.setOnRefreshListener(this);
         mAdapter = new HotAdapter();
+        mAdapter.setClick(this);
     }
 
     @Override
@@ -107,7 +108,6 @@ public class HotFragment extends BaseFragment<OnResultView<HotBean.ListBean>, Ho
         if (value == 1) {
             mAdapter.change(TList);
             recyclerView.setAdapter(mAdapter);
-            mAdapter.setClick(this);
         } else mAdapter.loadMore(TList);
 
         mAdapter.notifyItemRemoved(mAdapter.getItemCount());

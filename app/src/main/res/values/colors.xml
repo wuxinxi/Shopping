@@ -14,6 +14,7 @@
     <color name="bottom_nav_normal">#C7CCD3</color>
     <color name="gray">#C0C0C0</color>
     <color name="red">#D82917</color>
+    <color name="user">#DB5D50</color>
 
     <color name="cart_bottom">#90A0A0</color>
     <color name="cart_sum">#DEE2E2</color>

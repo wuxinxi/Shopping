@@ -14,6 +14,7 @@ import com.wxx.shopping.base.BaseFragment;
 import com.wxx.shopping.base.view.OnResultView;
 import com.wxx.shopping.bean.HotBean;
 import com.wxx.shopping.moudle.type.presenter.TypePresenter;
+import com.wxx.shopping.utils.OnItemClickListener;
 import com.wxx.shopping.utils.TToast;
 import com.wxx.shopping.widget.AutoLoadOnScrollListener;
 import com.yanzhenjie.nohttp.Logger;
@@ -29,7 +30,8 @@ import butterknife.OnClick;
  * TODO:一句话描述
  */
 
-public class ContentFragment extends BaseFragment<OnResultView<HotBean.ListBean>, TypePresenter> implements OnResultView<HotBean.ListBean>, SwipeRefreshLayout.OnRefreshListener {
+public class ContentFragment extends BaseFragment<OnResultView<HotBean.ListBean>, TypePresenter> implements
+        OnResultView<HotBean.ListBean>, SwipeRefreshLayout.OnRefreshListener, OnItemClickListener<HotBean.ListBean> {
 
     private static final String ARG_TYPE = "arg_type";
     @BindView(R.id.recyclerView)
@@ -77,6 +79,7 @@ public class ContentFragment extends BaseFragment<OnResultView<HotBean.ListBean>
         refresh.setColorSchemeResources(android.R.color.holo_green_light, android.R.color.holo_blue_light);
         refresh.setOnRefreshListener(this);
         mAdapter = new TypeCartAdapter();
+        mAdapter.setClick(this);
         manager = new GridLayoutManager(getActivity(), 2);
 
         recyclerView.setLayoutManager(manager);
@@ -130,6 +133,7 @@ public class ContentFragment extends BaseFragment<OnResultView<HotBean.ListBean>
     @Override
     public void onFail(String msg) {
         refresh.setRefreshing(false);
+        listener.setLoading(false);
         TToast.showToast(msg);
         if (mAdapter.getItemCount() <= 0) {
             refreshBtn.setVisibility(View.VISIBLE);
@@ -144,4 +148,9 @@ public class ContentFragment extends BaseFragment<OnResultView<HotBean.ListBean>
         mPresetner.fetchType(type, 1);
     }
 
+
+    @Override
+    public void onClick(View view, int postion, List<HotBean.ListBean> list) {
+
+    }
 }

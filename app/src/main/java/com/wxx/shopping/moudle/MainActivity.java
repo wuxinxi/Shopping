@@ -61,7 +61,8 @@ public class MainActivity extends SupportActivity implements BaseFragment.OnBack
                     fragments[FIRST],
                     fragments[SECOND],
                     fragments[THIRD],
-                    fragments[FOURTH]);
+                    fragments[FOURTH],
+                    fragments[FIVE]);
         } else {
             fragments[FIRST] = findFragment(HomeFragment.class);
             fragments[SECOND] = findFragment(HotFragment.class);
@@ -118,6 +119,8 @@ public class MainActivity extends SupportActivity implements BaseFragment.OnBack
                     } else if (currentFragment instanceof TypeFragment) {
                         currentFragment.popToChild(HomeFragment.class, false);
                     } else if (currentFragment instanceof CartFragment) {
+                        currentFragment.popToChild(HomeFragment.class, false);
+                    } else if (currentFragment instanceof MineFragment) {
                         currentFragment.popToChild(HomeFragment.class, false);
                     }
                     return;

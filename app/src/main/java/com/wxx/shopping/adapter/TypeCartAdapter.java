@@ -1,5 +1,6 @@
 package com.wxx.shopping.adapter;
 
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -60,10 +61,27 @@ public class TypeCartAdapter extends RecyclerView.Adapter {
                     .into(((TypeCartViewHolder) holder).imageView);
             ((TypeCartViewHolder) holder).title.setText(bean.getName());
             ((TypeCartViewHolder) holder).prices.setText("￥" + bean.getPrice());
+            ((TypeCartViewHolder) holder).sell.setText("已售："+bean.getSale());
         }
 
     }
 
+    //如果是GridLayoutManager时上拉刷新为1个Item
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
+        if (manager instanceof GridLayoutManager) {
+            final GridLayoutManager gridLayoutManager = (GridLayoutManager) manager;
+            gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+
+                    return getItemViewType(position) == ITEM_FOOT ? gridLayoutManager.getSpanCount() : 1;
+                }
+            });
+        }
+    }
 
     @Override
     public int getItemCount() {
