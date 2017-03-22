@@ -19,9 +19,9 @@
 4.分类TypeCartFragment <br/>
 <img src="https://raw.githubusercontent.com/wuxinxi/Shopping/master/image/type.jpg" width="460" height="768"/> <br/>
 5.我的MineFragment <br/>
-<img src="https://raw.githubusercontent.com/wuxinxi/Shopping/master/image/mine.jpg" width="460" height="768"/> <br/>
+<img src="https://raw.githubusercontent.com/wuxinxi/Shopping/master/image/mine.png" width="460" height="768"/> <br/>
 6.收货地址 <br/>
-<img src="https://raw.githubusercontent.com/wuxinxi/Shopping/master/image/address.jpg" width="460" height="768"/> <br/>
+<img src="https://raw.githubusercontent.com/wuxinxi/Shopping/master/image/address.png" width="460" height="768"/> <br/>
 ## 继续ing,欢迎star,fork,欢迎批评指导！
 # 感谢 <br/>
 其中使用很多开源库,在这里表示感谢,以后会一一贴出来
