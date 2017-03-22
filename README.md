@@ -20,4 +20,4 @@
 <img src="https://raw.githubusercontent.com/wuxinxi/Shopping/master/image/type.jpg" width="460" height="768"/>
 # 感谢 <br/>
 其中使用很多开源库，在这里表示感谢，就不贴出来了
-# 口号：我们不生成代码，我们只是Github、Stackoverflow的搬运工
+## 口号：不生成代码，只是Github、Stackoverflow的搬运工
