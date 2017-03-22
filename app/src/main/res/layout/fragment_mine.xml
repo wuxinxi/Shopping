@@ -23,6 +23,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
+                android:background="@drawable/bg_gradient"
                 android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_collapseMode="parallax"
@@ -95,6 +96,13 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay">
 
+                <ImageView
+                    android:id="@+id/setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:src="@mipmap/ic_setting" />
             </android.support.v7.widget.Toolbar>
 
 
@@ -142,8 +150,7 @@
                     android:gravity="center"
                     android:text="待收货"
                     app:bubbleFill="true"
-                    app:bubbleText="20"
-                    app:bubbleTextColor="@color/colorPrimary" />
+                    app:bubbleText="20" />
 
                 <View style="@style/line_horizontal"></View>
 
@@ -169,8 +176,8 @@
                     android:drawablePadding="5dp"
                     android:drawableTop="@mipmap/ic_service"
                     android:gravity="center"
-                    app:bubbleFill="true"
-                    android:text="退款/售后" />
+                    android:text="退款/售后"
+                    app:bubbleFill="true" />
 
             </LinearLayout>
 
@@ -202,10 +209,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawablePadding="5dp"
-                    app:bubbleFill="true"
                     android:drawableTop="@mipmap/ic_order"
                     android:gravity="center"
-                    android:text="我的订单" />
+                    android:text="我的订单"
+                    app:bubbleFill="true" />
 
                 <View style="@style/line_horizontal"></View>
 

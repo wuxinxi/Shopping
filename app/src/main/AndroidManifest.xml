@@ -34,6 +34,12 @@
             android:screenOrientation="portrait"
             android:smallScreens="true"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".moudle.manager.ManagerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
     </application>
 
 </manifest>

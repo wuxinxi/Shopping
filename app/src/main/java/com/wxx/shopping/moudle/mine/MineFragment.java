@@ -5,12 +5,14 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.wxx.shopping.R;
 import com.wxx.shopping.base.BaseFragment;
 import com.wxx.shopping.base.BasePresenter;
+import com.wxx.shopping.moudle.manager.ManagerActivity;
 import com.wxx.shopping.widget.TextViewBubble;
 
 import butterknife.BindView;
@@ -58,6 +60,8 @@ public class MineFragment extends BaseFragment implements AppBarLayout.OnOffsetC
     TextView myMoney;
     @BindView(R.id.address_manager)
     TextView addressManager;
+    @BindView(R.id.setting)
+    ImageView setting;
 
     public static MineFragment newInstance() {
         Bundle args = new Bundle();
@@ -90,7 +94,7 @@ public class MineFragment extends BaseFragment implements AppBarLayout.OnOffsetC
 
 
     @OnClick({R.id.head, R.id.user, R.id.no_pay, R.id.no_receipt, R.id.no_eva, R.id.service,
-            R.id.coupon, R.id.my_order, R.id.my_money, R.id.address_manager})
+            R.id.coupon, R.id.my_order, R.id.my_money, R.id.address_manager, R.id.setting})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.head:
@@ -112,6 +116,11 @@ public class MineFragment extends BaseFragment implements AppBarLayout.OnOffsetC
             case R.id.my_money:
                 break;
             case R.id.address_manager:
+                ManagerActivity.startActivity(getActivity());
+                getActivity().overridePendingTransition(R.anim.base_slide_right_in, R.anim.base_slide_remain);
+                break;
+            case R.id.setting:
+
                 break;
         }
     }
