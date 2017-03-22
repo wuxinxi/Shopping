@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.wxx.shopping.R;
 import com.wxx.shopping.base.BaseFragment;
 import com.wxx.shopping.base.BasePresenter;
+import com.wxx.shopping.widget.TextViewBubble;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -42,17 +43,17 @@ public class MineFragment extends BaseFragment implements AppBarLayout.OnOffsetC
     @BindView(R.id.app_bar)
     AppBarLayout appBar;
     @BindView(R.id.no_pay)
-    TextView noPay;
+    TextViewBubble noPay;
     @BindView(R.id.no_receipt)
-    TextView noReceipt;
+    TextViewBubble noReceipt;
     @BindView(R.id.no_eva)
-    TextView noEva;
+    TextViewBubble noEva;
     @BindView(R.id.service)
-    TextView service;
+    TextViewBubble service;
     @BindView(R.id.coupon)
-    TextView coupon;
+    TextViewBubble coupon;
     @BindView(R.id.my_order)
-    TextView myOrder;
+    TextViewBubble myOrder;
     @BindView(R.id.my_money)
     TextView myMoney;
     @BindView(R.id.address_manager)
@@ -64,7 +65,6 @@ public class MineFragment extends BaseFragment implements AppBarLayout.OnOffsetC
         fragment.setArguments(args);
         return fragment;
     }
-
 
     @Override
     protected BasePresenter createPresenter() {
@@ -122,4 +122,5 @@ public class MineFragment extends BaseFragment implements AppBarLayout.OnOffsetC
             toolbar.setTitle("");
         else toolbar.setTitle("个人中心");
     }
+
 }

@@ -18,8 +18,10 @@ import com.wxx.shopping.adapter.HomeAdapter;
 import com.wxx.shopping.base.BaseFragment;
 import com.wxx.shopping.bean.BannerBean;
 import com.wxx.shopping.bean.HomeBean;
+import com.wxx.shopping.moudle.Detail.DetailActivity;
 import com.wxx.shopping.moudle.home.presenter.HomePresenter;
 import com.wxx.shopping.moudle.home.view.OnResultView;
+import com.wxx.shopping.utils.API;
 import com.wxx.shopping.utils.GlideImageLoader;
 import com.wxx.shopping.utils.OnItemClickListener;
 import com.wxx.shopping.utils.TToast;
@@ -182,6 +184,8 @@ public class HomeFragment extends BaseFragment<OnResultView, HomePresenter> impl
                         TToast.showToast(list.get(postion).getCpThree().getTitle());
                         break;
                 }
+                DetailActivity.startActivity(getActivity(), API.WARES_DETAIL);
+                getActivity().overridePendingTransition(R.anim.base_slide_right_in, R.anim.base_slide_remain);
             }
         });
         animator.start();

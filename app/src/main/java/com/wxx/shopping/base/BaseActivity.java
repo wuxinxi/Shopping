@@ -3,11 +3,12 @@ package com.wxx.shopping.base;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 import com.wxx.shopping.R;
 
 import butterknife.ButterKnife;
+import me.yokeyword.fragmentation.SupportActivity;
 
 /**
  * 作者：Tangren_ on 2017/3/14 15:12.
@@ -15,7 +16,7 @@ import butterknife.ButterKnife;
  * TODO:一句话描述
  */
 
-public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCompatActivity {
+public abstract class BaseActivity<V, T extends BasePresenter<V>> extends SupportActivity {
 
     protected abstract void initView();
 
@@ -67,9 +68,16 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        if (!this.getClass().getName().equals("com.wxx.shopping.moudle.MainActivity"))
-            overridePendingTransition(0, R.anim.base_slide_right_out);
+    public void onBackPressedSupport() {
+        super.onBackPressedSupport();
+        finishActivityFromRight();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finishActivityFromRight();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

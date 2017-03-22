@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wxx.shopping.http.CallServer;
 import com.wxx.shopping.moudle.home.HomeFragment;
 
 import butterknife.ButterKnife;
@@ -81,7 +82,8 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends Suppor
         if (getChildFragmentManager().getBackStackEntryCount() > 1) {
             popChild();
         } else {
-            if (this instanceof HomeFragment) {//如果是第一个framgent 就退出app
+            if (this instanceof HomeFragment) {//如果是第一个framgent 就退出app,并且停止所有的网络请求
+                CallServer.getHttpclient().stopAll();
                 _mActivity.finish();
             } else listener.onBackToFirstFragment(); //如果不是就返回第一个
         }

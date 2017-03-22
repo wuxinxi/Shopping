@@ -118,7 +118,7 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.wxx.shopping.widget.TextViewBubble
                     android:id="@+id/no_pay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -126,11 +126,13 @@
                     android:drawablePadding="5dp"
                     android:drawableTop="@mipmap/ic_no_pay"
                     android:gravity="center"
-                    android:text="待付款" />
+                    android:text="待付款"
+                    app:bubbleFill="true"
+                    app:bubbleText="1" />
 
                 <View style="@style/line_horizontal"></View>
 
-                <TextView
+                <com.wxx.shopping.widget.TextViewBubble
                     android:id="@+id/no_receipt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -138,11 +140,14 @@
                     android:drawablePadding="5dp"
                     android:drawableTop="@mipmap/ic_no_receipt"
                     android:gravity="center"
-                    android:text="待收货" />
+                    android:text="待收货"
+                    app:bubbleFill="true"
+                    app:bubbleText="20"
+                    app:bubbleTextColor="@color/colorPrimary" />
 
                 <View style="@style/line_horizontal"></View>
 
-                <TextView
+                <com.wxx.shopping.widget.TextViewBubble
                     android:id="@+id/no_eva"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -150,11 +155,13 @@
                     android:drawablePadding="5dp"
                     android:drawableTop="@mipmap/ic_no_eva"
                     android:gravity="center"
-                    android:text="待评价" />
+                    android:text="待评价"
+                    app:bubbleFill="true"
+                    app:bubbleText="10" />
 
                 <View style="@style/line_horizontal"></View>
 
-                <TextView
+                <com.wxx.shopping.widget.TextViewBubble
                     android:id="@+id/service"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -162,6 +169,7 @@
                     android:drawablePadding="5dp"
                     android:drawableTop="@mipmap/ic_service"
                     android:gravity="center"
+                    app:bubbleFill="true"
                     android:text="退款/售后" />
 
             </LinearLayout>
@@ -176,7 +184,7 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.wxx.shopping.widget.TextViewBubble
                     android:id="@+id/coupon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -188,12 +196,13 @@
 
                 <View style="@style/line_horizontal"></View>
 
-                <TextView
+                <com.wxx.shopping.widget.TextViewBubble
                     android:id="@+id/my_order"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawablePadding="5dp"
+                    app:bubbleFill="true"
                     android:drawableTop="@mipmap/ic_order"
                     android:gravity="center"
                     android:text="我的订单" />

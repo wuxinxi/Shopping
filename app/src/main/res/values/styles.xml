@@ -46,4 +46,13 @@
 
     <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+    <style name="bubbleTextView">
+        <item name="bubbleTextColor">@color/white</item>
+        <item name="bubbleTextSize">13sp</item>
+        <item name="bubbleColor">@color/colorPrimary</item>
+        <item name="bubbleFill">false</item>
+        <item name="bubbleText"></item>
+    </style>
+
 </resources>

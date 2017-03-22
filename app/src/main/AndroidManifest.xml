@@ -26,6 +26,14 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".moudle.Detail.DetailActivity"
+            android:anyDensity="true"
+            android:largeScreens="true"
+            android:normalScreens="true"
+            android:screenOrientation="portrait"
+            android:smallScreens="true"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

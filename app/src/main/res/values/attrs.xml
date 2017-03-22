@@ -18,4 +18,12 @@
         <attr name="buttonSubBackgroud" />
 
     </declare-styleable>
+
+    <declare-styleable name="TextViewBubble">
+        <attr name="bubbleTextColor" format="color"></attr>
+        <attr name="bubbleTextSize" format="dimension"></attr>
+        <attr name="bubbleColor" format="color"></attr>
+        <attr name="bubbleFill" format="boolean"></attr>
+        <attr name="bubbleText" format="string"></attr>
+    </declare-styleable>
 </resources>
