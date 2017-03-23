@@ -39,6 +39,10 @@
             android:name=".moudle.manager.ManagerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".moudle.manager.AppendAddress"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
     </application>
 

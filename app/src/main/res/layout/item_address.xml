@@ -29,16 +29,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="2"
-                android:text="唐人"
-                android:textSize="16sp" />
+                android:text="唐人" />
 
             <TextView
                 android:id="@+id/phone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="15012472465"
-                android:textSize="16sp" />
+                android:text="15012472465" />
         </LinearLayout>
 
         <TextView
@@ -50,8 +48,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:maxLines="3"
-            android:text="广东省深圳市南山区科技园科苑西路深圳小兵智能科技有限公司"
-            android:textSize="16sp" />
+            android:text="广东省深圳市南山区科技园科苑西路深圳小兵智能科技有限公司" />
 
         <View style="@style/line_vertical" />
 

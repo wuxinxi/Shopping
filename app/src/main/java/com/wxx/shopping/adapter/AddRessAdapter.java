@@ -43,7 +43,7 @@ public class AddRessAdapter extends RecyclerView.Adapter {
         viewHolder.name.setText(list.get(position).getName());
         viewHolder.phone.setText(list.get(position).getPhone());
         viewHolder.address.setText(list.get(position).getAddress());
-        boolean isChecked = list.get(position).isCheck();
+        boolean isChecked = list.get(position).getIsCheck();
         if (isChecked) {
             viewHolder.checkBox.setChecked(true);
             viewHolder.checkBox.setText("默认地址");
@@ -57,6 +57,15 @@ public class AddRessAdapter extends RecyclerView.Adapter {
     public void add(List<AddRessInfo> list) {
         this.list = list;
         notifyDataSetChanged();
+    }
+
+    public void loadMore(List<AddRessInfo> list) {
+        if (list == null) {
+            add(list);
+        } else {
+            this.list.addAll(list);
+            notifyDataSetChanged();
+        }
     }
 
     @Override

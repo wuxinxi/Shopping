@@ -17,6 +17,7 @@ import me.yokeyword.fragmentation.Fragmentation;
 public class MyApplication extends Application {
 
     private static MyApplication instance;
+    private final String DB_NAME = "address.db";
 
     @Override
     public void onCreate() {
@@ -40,4 +41,5 @@ public class MyApplication extends Application {
         }
         return instance;
     }
+
 }

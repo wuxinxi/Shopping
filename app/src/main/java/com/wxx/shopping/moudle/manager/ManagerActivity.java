@@ -45,6 +45,8 @@ public class ManagerActivity extends BaseActivity implements OnItemClickListener
     private List<AddRessInfo> list;
     private AddRessAdapter mAdapter;
 
+    private final int DEFAULT = 0;
+
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, ManagerActivity.class);
         context.startActivity(intent);
@@ -73,12 +75,8 @@ public class ManagerActivity extends BaseActivity implements OnItemClickListener
             list = new Gson().fromJson(Utils.info, new TypeToken<List<AddRessInfo>>() {
             }.getType());
         } catch (Exception e) {
-            e.getMessage();
-
+            Logger.d(e.getMessage());
         }
-
-        Logger.d(Utils.info);
-
 
         mAdapter.add(list);
         recyclerView.setAdapter(mAdapter);
@@ -91,7 +89,8 @@ public class ManagerActivity extends BaseActivity implements OnItemClickListener
 
     @OnClick(R.id.addess)
     public void onClick() {
-
+        Intent intent = new Intent(ManagerActivity.this, AppendAddress.class).addFlags(DEFAULT);
+        startActivityFromRight(intent, DEFAULT);
     }
 
     @Override
@@ -103,6 +102,14 @@ public class ManagerActivity extends BaseActivity implements OnItemClickListener
             case R.id.edit:
                 Toast.makeText(this, "编辑", Toast.LENGTH_SHORT).show();
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == DEFAULT) {
+
         }
     }
 }

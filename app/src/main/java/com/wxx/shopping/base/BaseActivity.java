@@ -55,6 +55,11 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends Suppor
         overridePendingTransition(R.anim.base_slide_right_in, R.anim.base_slide_remain);
     }
 
+    protected void startActivityFromRight(Intent intent, int flag) {
+        startActivityForResult(intent, flag);
+        overridePendingTransition(R.anim.base_slide_right_in, R.anim.base_slide_remain);
+    }
+
     protected void finishActivityFromRight() {
         finish();
         overridePendingTransition(0, R.anim.base_slide_right_out);
